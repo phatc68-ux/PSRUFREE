@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA"
+    android:orientation="vertical">
+
+    <!-- ส่วนหัวแอป (Header ด้านบน) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00794C"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="#FFFFFF" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PSRU Swap"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ตลาดนัดส่งต่อของ ม.ราชภัฏพิบูลสงคราม"
+                    android:textColor="#E2F0EC"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginRight="10dp"
+            android:background="#00A86B"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:text="+ ลงประกาศ"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="#E2F0EC" />
+    </LinearLayout>
+
+    <!-- เนื้อหาหลัก (รายการโปรด) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="รายการโปรดที่บันทึกไว้"
+                android:textColor="#212529"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- การ์ดสินค้า 2 คอลัมน์ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- ชิ้นที่ 1 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="8dp"
+                    android:background="#FFFFFF"
+                    android:elevation="1dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="#E9ECEF">
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="top|end"
+                            android:layout_margin="8dp"
+                            android:background="#FFFFFF"
+                            android:gravity="center"
+                            android:text="❤️"
+                            android:textSize="14sp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="หนังสือเรียน"
+                            android:textColor="#00A86B"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="หนังสือ Java Programming &amp; OOP ฉบับสมบูรณ์"
+                            android:textColor="#212529"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="฿150"
+                            android:textColor="#00794C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ชิ้นที่ 2 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:background="#FFFFFF"
+                    android:elevation="1dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="#343A40">
+
+                        <TextView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="top|end"
+                            android:layout_margin="8dp"
+                            android:background="#FFFFFF"
+                            android:gravity="center"
+                            android:text="❤️"
+                            android:textSize="14sp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:paddingTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ไอทีและแกดเจ็ต"
+                            android:textColor="#00A86B"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="แท็บเล็ต iPad Gen 9 (64GB) พร้อมเคสและปากกาเทียบ"
+                            android:textColor="#212529"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="6,500"
+                            android:textColor="#00794C"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- แถบเมนูด้านล่าง -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/navMarket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠\nตลาดนัด"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/navChat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="💬\nแชท"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/navFavorite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="❤️\nรายการโปรด"
+            android:textColor="#00794C"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤\nโปรไฟล์"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</LinearLayout>

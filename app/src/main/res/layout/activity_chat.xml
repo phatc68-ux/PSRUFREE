@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA"
+    android:orientation="vertical">
+
+    <!-- ส่วนหัวแอป -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00794C"
+        android:gravity="center_vertical"
+        android:paddingTop="36dp"
+        android:paddingBottom="12dp"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PSRU Swap"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ตลาดนัดส่งต่อของ ม.ราชภัฏพิบูลสงคราม"
+                android:textColor="#E2F0EC"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginRight="8dp"
+            android:background="#00A86B"
+            android:gravity="center"
+            android:paddingHorizontal="12dp"
+            android:text="+ ลงประกาศ"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="#E2F0EC" />
+    </LinearLayout>
+
+    <!-- เนื้อหาหลัก -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="ข้อความสนทนา"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- รายการแชท (กล่องข้อความ) -->
+        <LinearLayout
+            android:id="@+id/cardChat1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_card"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <!-- รูปโปรไฟล์ผู้สนทนา -->
+            <View
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="12dp"
+                android:background="#E9ECEF" />
+
+            <!-- ข้อมูลแชท -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ธนวัฒน์ ศึกษาดี"
+                        android:textColor="#333333"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:42 น."
+                        android:textColor="#888888"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="นัดรับที่อาคาร กป. ช่วงบ่ายสองนะครับ"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- เมนูด้านล่างสุด -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/navMarket"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠\nตลาดนัด"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/navChat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            textStyle="bold"
+            android:text="💬\nแชท"
+            android:textColor="#00794C"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/navFavorite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="❤️\nรายการโปรด"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤\nโปรไฟล์"
+            android:textColor="#666666"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</LinearLayout>

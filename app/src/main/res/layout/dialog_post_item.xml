@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- ส่วนหัว Popup และปุ่มกากบาทปิด -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="➕ ลงประกาศใน PSRU Swap"
+            android:textColor="#212529"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="#E9ECEF"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="#495057"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ประเภทประกาศ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:text="ประเภทประกาศ"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginRight="4dp"
+            android:background="#E2F0EC"
+            android:gravity="center"
+            android:text="🏷️ ขายต่อ"
+            android:textColor="#00794C"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="🔄 แลกของ"
+            android:textColor="#666666"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="🎁 ให้ฟรี"
+            android:textColor="#666666"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:text="📢 ตามหา"
+            android:textColor="#666666"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- ชื่อสินค้าที่ต้องการขาย/ส่งต่อ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="ชื่อสินค้าที่ต้องการขาย/ส่งต่อ"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="12dp"
+        android:background="#F8F9FA"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:text="เช่น หนังสือ Java Programming"
+        android:textColor="#AAAAAA"
+        android:textSize="12sp" />
+
+    <!-- หมวดหมู่ และ ราคา (วางคู่กัน) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="หมวดหมู่"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#F8F9FA"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:text="📖 หนังสือเรียน ▾"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="ราคา (บาท)"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#F8F9FA"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp"
+                android:text="เช่น 150"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- อัปโหลดรูปภาพ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="อัปโหลดรูปภาพสินค้าจากเครื่อง"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="12dp"
+        android:background="#F8F9FA"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:text="เลือกไฟล์ ไม่ได้เลือกไฟล์ใด"
+        android:textColor="#888888"
+        android:textSize="12sp" />
+
+    <!-- รายละเอียดเพิ่มเติม -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="รายละเอียดเพิ่มเติม"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="12dp"
+        android:background="#F8F9FA"
+        android:padding="10dp"
+        android:text="ระบุรายละเอียด สภาพสินค้า..."
+        android:textColor="#AAAAAA"
+        android:textSize="12sp" />
+
+    <!-- สถานที่ติดต่อ / นัดรับ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="สถานที่ติดต่อ / นัดรับใน ม.พิบูลสงคราม"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="#F8F9FA"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:text="อาคารเรียนรวมและหอประชุม (กป.)"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <!-- ปุ่มโพสต์ประกาศ -->
+    <TextView
+        android:id="@+id/btnSubmitPost"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#00794C"
+        android:gravity="center"
+        android:text="โพสต์ประกาศลง PSRU Swap"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

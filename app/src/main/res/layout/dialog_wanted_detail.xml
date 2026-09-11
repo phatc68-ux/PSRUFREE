@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:background="@drawable/bg_rounded_card"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- ส่วนบน: ป้าย "ตามหา" (สีม่วง) และ ปุ่มกากบาทปิด -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#6f42c1"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:text="ตามหา"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:background="#DDDDDD"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- รูปภาพตัวอย่างการตามหา -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginBottom="12dp"
+        android:background="#E9ECEF"
+        android:scaleType="centerCrop"
+        android:src="@android:drawable/ic_menu_gallery" />
+
+    <!-- หมวดหมู่ และ งบประมาณ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="หนังสือเรียน · PSRU SWAP"
+            android:textColor="#00794C"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="งบไม่เกิน\n300 บาท"
+            android:textColor="#00794C"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:gravity="end" />
+    </LinearLayout>
+
+    <!-- หัวข้อสิ่งที่ตามหา -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="ตามหาหนังสือ Introduction to Algorithms ฉบับภาษาไทย/อังกฤษ"
+        android:textColor="#222222"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- ข้อมูลผู้โพสต์ตามหา -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="#F8F9FA"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <View
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="10dp"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="กัญญาณี ศรีสุข"
+                android:textColor="#333333"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="คณะวิทยาศาสตร์และเทคโนโลยี • PSRU"
+                android:textColor="#777777"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="#E2F0EC"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:text="ดูโปรไฟล์"
+            android:textColor="#00794C"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- รายละเอียด -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="รายละเอียด"
+        android:textColor="#333333"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="ใครเรียนปีสูงแล้วไม่ได้ใช้ เล่มนี้อยากขอรับช่วงต่อครับ ขอสภาพอ่านรู้เรื่อง ไม่มีหน้าขาดหาย"
+        android:textColor="#555555"
+        android:textSize="11sp" />
+
+    <!-- จุดนัดรับแนะนำ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#E2F0EC"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="📍"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="จุดนัดรับแนะนำภายใน ม.พิบูลสงคราม:\nตึกเรียนรวมคณะวิทยาศาสตร์ฯ"
+            android:textColor="#0F5132"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- ปุ่มด้านล่าง -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_rounded_card"
+            android:gravity="center"
+            android:text="❤️"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="#00794C"
+            android:gravity="center"
+            android:text="💬 ติดต่อผู้โพสต์ / นัดรับ"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
