@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
     android:background="@drawable/bg_rounded_card"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- ปิด / ปุ่มกากบาท -->
+    <!-- ปิด / ปุ่มกากบาท และ ป้าย "ขาย" -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,14 +36,14 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- รูปภาพสินค้า -->
+    <!-- รูปภาพสินค้า (ปรับเป็น centerInside และพื้นหลังขาว เพื่อให้รูปแสดงครบทุกสัดส่วนพอดี) -->
     <ImageView
+        android:id="@+id/ivDetailProduct"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="12dp"
-        android:background="#E9ECEF"
-        android:scaleType="centerCrop"
-        android:src="@android:drawable/ic_menu_gallery" />
+        android:background="#FFFFFF"
+        android:scaleType="centerInside" />
 
     <!-- หมวดหมู่ และ ราคา -->
     <LinearLayout
@@ -54,18 +53,20 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tvDetailCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="หนังสือเรียน · PSRU SWAP"
+            android:text="หมวดหมู่ · PSRU SWAP"
             android:textColor="#00794C"
             android:textSize="11sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvDetailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="150"
+            android:text="฿0"
             android:textColor="#00794C"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -73,10 +74,11 @@
 
     <!-- ชื่อสินค้า -->
     <TextView
+        android:id="@+id/tvDetailName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="หนังสือ Java Programming &amp; OOP ฉบับสมบูรณ์"
+        android:text="ชื่อสินค้า"
         android:textColor="#222222"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -130,7 +132,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- รายละเอียด -->
+    <!-- หัวข้อรายละเอียด -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -140,11 +142,13 @@
         android:textSize="12sp"
         android:textStyle="bold" />
 
+    <!-- เนื้อหารายละเอียด -->
     <TextView
+        android:id="@+id/tvDetailDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="หนังสือเรียนวิชาเขียนโปรแกรมคอมพิวเตอร์ สภาพ 90% ไม่มีรอยขีดเขียนด้านใน เหมาะสำหรับน้องปี 1-2 สาขาวิทยาการคอมพิวเตอร์หรือ IT ม.พิบูลสงคราม"
+        android:text="ไม่มีรายละเอียดเพิ่มเติม"
         android:textColor="#555555"
         android:textSize="11sp" />
 
@@ -165,9 +169,10 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tvDetailLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="จุดนัดรับแนะนำภายใน ม.พิบูลสงคราม:\nอาคารเรียนรวมและหอประชุม (กป.)"
+            android:text="ม.ราชภัฏพิบูลสงคราม"
             android:textColor="#0F5132"
             android:textSize="11sp" />
     </LinearLayout>

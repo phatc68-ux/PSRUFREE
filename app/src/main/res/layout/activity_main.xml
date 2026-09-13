@@ -5,7 +5,7 @@
     android:background="#F8F9FA"
     android:orientation="vertical">
 
-    <!-- ส่วนหัวแอป -->
+    <!-- ส่วนหัวแอป (Header) สีเขียวเข้มพร้อมโลโก้, ชื่อ, ปุ่มลงประกาศ และไอคอนโปรไฟล์ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +14,15 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="36dp"
         android:paddingBottom="12dp">
+
+        <!-- ไอคอนโลโก้แอป -->
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            android:padding="6dp"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -26,23 +35,23 @@
                 android:layout_height="wrap_content"
                 android:text="PSRU Swap"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ตลาดนัดส่งต่อของ ม.ราชภัฏพิบูลสงคราม"
-                android:textColor="#E2F0EC"
-                android:textSize="11sp" />
+                android:textColor="#D1E7DD"
+                android:textSize="10.5sp" />
         </LinearLayout>
 
-        <!-- ปุ่มลงประกาศ (ใส่ ID เรียบร้อยแล้ว) -->
+        <!-- ปุ่มลงประกาศ -->
         <TextView
             android:id="@+id/btnOpenPost"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="8dp"
+            android:layout_height="34dp"
+            android:layout_marginRight="10dp"
             android:background="#00A86B"
             android:clickable="true"
             android:focusable="true"
@@ -53,10 +62,16 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
-        <View
+        <!-- ปุ่มโปรไฟล์ขวาบน -->
+        <ImageView
+            android:id="@+id/btnHeaderProfile"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:background="#E2F0EC" />
+            android:background="#E9ECEF"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_foreground" />
     </LinearLayout>
 
     <!-- เนื้อหาหลัก (เลื่อนได้) -->
@@ -64,20 +79,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="14dp">
 
-            <!-- แท็บสลับหน้า -->
+            <!-- แท็บสลับหน้า (ตลาดสินค้า / บอร์ดตามหา) แบบโค้งมน -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="14dp"
-                android:background="#FFFFFF"
+                android:layout_height="46dp"
+                android:layout_marginBottom="12dp"
+                android:background="#E9ECEF"
                 android:orientation="horizontal"
                 android:padding="3dp">
 
@@ -86,21 +102,27 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#00794C"
+                    android:background="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:text="🛒 ตลาดสินค้า (มีของ)"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#00794C"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:elevation="1dp" />
 
                 <TextView
                     android:id="@+id/tabWantedBoard"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:text="📢 บอร์ดตามหาของ"
-                    android:textColor="#666666"
+                    android:textColor="#6C757D"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -111,7 +133,8 @@
                 android:layout_marginBottom="12dp"
                 android:background="#FFFFFF"
                 android:gravity="center_vertical"
-                android:paddingHorizontal="12dp">
+                android:paddingHorizontal="14dp"
+                android:elevation="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -120,15 +143,88 @@
                     android:text="🔍"
                     android:textSize="14sp" />
 
-                <TextView
+                <EditText
+                    android:id="@+id/etSearch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ค้นหา ชื่อสินค้า หรือสิ่งที่อยากได้..."
-                    android:textColor="#AAAAAA"
-                    android:textSize="13sp" />
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="ค้นหา ชื่อสินค้า หรือสิ่งที่อยากได้..."
+                    android:textColor="#212529"
+                    android:textColorHint="#ADB5BD"
+                    android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- หมวดหมู่ -->
+            <!-- แถบหมวดหมู่สินค้า (เลื่อนแนวนอนได้) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/catAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:background="#00794C"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="7dp"
+                        android:text="🔥 ทั้งหมด"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/catBook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:background="#FFFFFF"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="7dp"
+                        android:text="📖 หนังสือเรียน"
+                        android:textColor="#495057"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/catEquipment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:background="#FFFFFF"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="7dp"
+                        android:text="✏️ อุปกรณ์เรียน"
+                        android:textColor="#495057"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/catIt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="7dp"
+                        android:text="💻 ไอที/หูฟัง"
+                        android:textColor="#495057"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- แถบประเภทประกาศ (ทุกประเภท / ขาย / แลก / ให้ฟรี) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,57 +232,85 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/typeAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:background="#00794C"
+                    android:background="#212529"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"
-                    android:text="ทั้งหมด"
+                    android:text="ทุกประเภท"
                     android:textColor="#FFFFFF"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/typeSell"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:background="#FFFFFF"
+                    android:background="#D1E7DD"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"
-                    android:text="📖 หนังสือเรียน"
-                    android:textColor="#444444"
-                    android:textSize="11sp" />
+                    android:text="🟢 ขาย"
+                    android:textColor="#00794C"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/typeSwap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_marginRight="6dp"
+                    android:background="#E2E3E5"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="6dp"
-                    android:text="✏️ อุปกรณ์เรียน"
-                    android:textColor="#444444"
-                    android:textSize="11sp" />
+                    android:text="🔄 แลก"
+                    android:textColor="#495057"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/typeFree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#F8D7DA"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="🎁 ให้ฟรี"
+                    android:textColor="#842029"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- แบนเนอร์ -->
+            <!-- แบนเนอร์ประชาสัมพันธ์ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="14dp"
                 android:background="#00A86B"
                 android:orientation="vertical"
-                android:padding="14dp">
+                android:padding="16dp"
+                android:elevation="1dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00794C"
                     android:paddingHorizontal="8dp"
-                    android:paddingVertical="2dp"
-                    android:text="พื้นที่สาธารณะราชภัฏพิบูลสงคราม"
+                    android:paddingVertical="3dp"
+                    android:text="พื้นที่ชาวราชภัฏพิบูลสงคราม"
                     android:textColor="#FFFFFF"
-                    android:textSize="9sp" />
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -203,7 +327,7 @@
                     android:layout_marginTop="2dp"
                     android:text="ประหยัดเงินในกระเป๋า ลดขยะ ร่วมใจชาว PSRU"
                     android:textColor="#E2F0EC"
-                    android:textSize="11sp" />
+                    android:textSize="10.5sp" />
             </LinearLayout>
 
             <!-- หัวข้อรายการสินค้า -->
@@ -211,6 +335,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -218,162 +343,65 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="รายการสินค้า (ขาย / แลก / ให้ฟรี)"
-                    android:textColor="#333333"
+                    android:textColor="#212529"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:text="6 รายการ"
-                    android:textColor="#888888"
+                    android:textColor="#6C757D"
                     android:textSize="11sp" />
             </LinearLayout>
 
-            <!-- รายการสินค้า (จำลอง 2 การ์ด) -->
+            <!-- กล่องคอนเทนเนอร์สำหรับแสดงรายการสินค้า (รองรับสินค้าไดนามิกที่เพิ่มเข้ามา) -->
             <LinearLayout
+                android:id="@+id/containerProducts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- สินค้าชิ้นที่ 1 -->
-                <LinearLayout
-                    android:id="@+id/cardProduct1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="8dp"
-                    android:background="#FFFFFF"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#00794C"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:text="ขาย"
-                        android:textColor="#FFFFFF"
-                        android:textSize="9sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:layout_marginTop="8dp"
-                        android:background="#E9ECEF" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="หนังสือเรียน"
-                        android:textColor="#00794C"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="หนังสือ Java Programming &amp; OOP ฉบับสมบูรณ์"
-                        android:textColor="#333333"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="฿150"
-                        android:textColor="#00794C"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- สินค้าชิ้นที่ 2 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="8dp"
-                    android:background="#FFFFFF"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#00794C"
-                        android:paddingHorizontal="6dp"
-                        android:paddingVertical="2dp"
-                        android:text="ขาย"
-                        android:textColor="#FFFFFF"
-                        android:textSize="9sp"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:layout_marginTop="8dp"
-                        android:background="#E9ECEF" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="อุปกรณ์การเรียน"
-                        android:textColor="#00794C"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="เครื่องคิดเลขวิทยาศาสตร์ Casio FX-990ES Plus"
-                        android:textColor="#333333"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="฿320"
-                        android:textColor="#00794C"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </LinearLayout>
+                android:orientation="vertical" />
 
         </LinearLayout>
     </ScrollView>
 
-    <!-- เมนูด้านล่างสุด (มี id ครบถ้วน) -->
+    <!-- เมนูด้านล่างสุด (Bottom Navigation) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="56dp"
         android:background="#FFFFFF"
         android:elevation="8dp"
         android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/navMarket"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:text="🏠\nตลาดนัด"
-            android:textColor="#00794C"
-            android:textSize="10sp" />
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏠"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ตลาดนัด"
+                android:textColor="#00794C"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/navChat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -381,29 +409,69 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="💬\nแชท"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💬"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="แชท"
+                android:textColor="#6C757D"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/navFavorite"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:text="❤️\nรายการโปรด"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="❤️"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="รายการโปรด"
+                android:textColor="#6C757D"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/navProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:text="👤\nโปรไฟล์"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👤"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="โปรไฟล์"
+                android:textColor="#6C757D"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
