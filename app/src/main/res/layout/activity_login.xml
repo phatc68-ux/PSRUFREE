@@ -11,11 +11,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="8dp"
         android:text="PSRU Swap 🎓"
         android:textColor="#00794C"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:textColor="#666666"
         android:textSize="12sp" />
 
-    <!-- ฟอร์มกรอกข้อมูลเข้าสู่ระบบ -->
+    <!-- ฟอร์มเข้าสู่ระบบ -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,23 +35,23 @@
         android:padding="20dp"
         android:elevation="2dp">
 
-        <!-- อีเมล -->
+        <!-- อีเมล หรือ รหัสนักศึกษา -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="อีเมล"
+            android:text="อีเมล หรือ รหัสนักศึกษา"
             android:textColor="#333333"
             android:textSize="12sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etLoginEmail"
+            android:id="@+id/etLoginEmailOrId"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginBottom="14dp"
+            android:layout_marginBottom="16dp"
             android:background="#F8F9FA"
-            android:hint="เช่น student@psru.ac.th"
+            android:hint="เช่น student@psru.ac.th หรือ 6812247005"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="12dp"
             android:textSize="13sp" />
@@ -70,7 +70,7 @@
             android:id="@+id/etLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="24dp"
             android:background="#F8F9FA"
             android:hint="กรอกรหัสผ่านของคุณ"
             android:inputType="textPassword"

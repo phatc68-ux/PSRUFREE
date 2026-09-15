@@ -2,24 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA"
+    android:background="#F5F5F5"
     android:orientation="vertical">
 
-    <!-- 1. ส่วนหัวแอป (กันกล้องมือถือบังด้วย paddingTop) -->
+    <!-- ส่วนหัวแอป (Header) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00794C"
+        android:padding="12dp"
         android:gravity="center_vertical"
-        android:paddingTop="36dp"
-        android:paddingBottom="12dp"
-        android:paddingHorizontal="16dp">
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,356 +33,184 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ตลาดนัดส่งต่อของ ม.ราชภัฏพิบูลสงคราม"
-                android:textColor="#E2F0EC"
-                android:textSize="11sp" />
+                android:textColor="#E0F2E9"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- ปุ่มลงประกาศ -->
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_marginRight="8dp"
-            android:background="#00A86B"
-            android:gravity="center"
-            android:paddingHorizontal="12dp"
+            android:backgroundTint="#00A86B"
             android:text="+ ลงประกาศ"
             android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <!-- โปรไฟล์ -->
-        <View
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:background="#E2F0EC" />
+            android:textSize="12sp" />
     </LinearLayout>
 
-    <!-- พื้นที่เลื่อนเนื้อหาหลัก -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="14dp">
-
-            <!-- 2. ปุ่มสลับแท็บหลัก -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_rounded_card"
-                android:orientation="horizontal"
-                android:padding="3dp">
-
-                <TextView
-                    android:id="@+id/tabMarketplace"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="🛒 ตลาดสินค้า (มีของ)"
-                    android:textColor="#666666"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/tabWantedBoard"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#00794C"
-                    android:gravity="center"
-                    android:text="📢 บอร์ดตามหาของ"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!-- 3. ช่องค้นหา -->
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_rounded_card"
-                android:hint="  🔍 ค้นหาสิ่งที่ต้องการหา..."
-                android:paddingHorizontal="12dp"
-                android:textSize="13sp" />
-
-            <!-- 4. หมวดหมู่ย่อย -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginRight="6dp"
-                    android:background="#6f42c1"
-                    android:gravity="center"
-                    android:paddingHorizontal="12dp"
-                    android:text="ทั้งหมด (ตามหา)"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginRight="6dp"
-                    android:background="@drawable/bg_rounded_card"
-                    android:gravity="center"
-                    android:paddingHorizontal="10dp"
-                    android:text="📖 หนังสือเรียน"
-                    android:textColor="#444444"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:background="@drawable/bg_rounded_card"
-                    android:gravity="center"
-                    android:paddingHorizontal="10dp"
-                    android:text="✏️ อุปกรณ์เรียน"
-                    android:textColor="#444444"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <!-- หัวข้อรายการประกาศตามหา -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ประกาศตามหาของจากเพื่อนๆ ใน มอ"
-                    android:textColor="#333333"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 รายการ"
-                    android:textColor="#888888"
-                    android:textSize="11sp" />
-            </LinearLayout>
-
-            <!-- 5. รายการการ์ดประกาศตามหาของ (ชิ้นที่ 1 ใส่ ID สำหรับดักคลิก) -->
-            <LinearLayout
-                android:id="@+id/cardWanted1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_rounded_card"
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <!-- ป้ายแท็ก "ตามหา" สีม่วง -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#6f42c1"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:text="ตามหา"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <!-- รายละเอียดเนื้อหาในการ์ด -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- รูปภาพตัวอย่าง -->
-                    <View
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginRight="10dp"
-                        android:background="#E9ECEF" />
-
-                    <!-- ข้อความรายละเอียด -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="หนังสือเรียน · PSRU SWAP"
-                            android:textColor="#00794C"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="ตามหาหนังสือ Introduction to Algorithms ฉบับภาษาไทย/อังกฤษ"
-                            android:textColor="#333333"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="งบไม่เกิน 300 บาท"
-                            android:textColor="#6f42c1"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- การ์ดชิ้นที่ 2 (ตัวอย่างสำรอง) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_rounded_card"
-                android:orientation="vertical"
-                android:padding="12dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#6f42c1"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:text="ตามหา"
-                        android:textColor="#FFFFFF"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginRight="10dp"
-                        android:background="#E9ECEF" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="อุปกรณ์การเรียน · PSRU SWAP"
-                            android:textColor="#00794C"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="ตามหาเครื่องคิดเลขวิทยาศาสตร์มือสอง สภาพใช้งานได้"
-                            android:textColor="#333333"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="งบไม่เกิน 250 บาท"
-                            android:textColor="#6f42c1"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- 6. เมนูด้านล่างสุด -->
+    <!-- แท็บสลับหน้า (ตลาดสินค้า / บอร์ดตามหาของ) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:elevation="8dp">
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:text="🛒 ตลาดสินค้า (มีของ)"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:text="📢 บอร์ดตามหาของ"
+            android:textColor="#00794C"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- ช่องค้นหา -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="8dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_rounded_card"
+            android:backgroundTint="#F0F0F0"
+            android:hint="🔍 ค้นหา ชื่อสินค้า หรือสิ่งที่อยากได้..."
+            android:paddingHorizontal="12dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- หมวดหมู่ย่อย (Horizontal Scroll) -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="#FFF3CD"
+                android:text="🔥 ทั้งหมด"
+                android:textColor="#856404"
+                android:textSize="11sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="#E8F8F0"
+                android:text="📖 หนังสือเรียน"
+                android:textColor="#00794C"
+                android:textSize="11sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginEnd="6dp"
+                android:backgroundTint="#E8F8F0"
+                android:text="✏️ อุปกรณ์เรียน"
+                android:textColor="#00794C"
+                android:textSize="11sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:backgroundTint="#E8F8F0"
+                android:text="💻 ไอที/หูฟัง"
+                android:textColor="#00794C"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- แบนเนอร์ประชาสัมพันธ์ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="#00794C"
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="🏠\nตลาดนัด"
-            android:textColor="#00794C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="พื้นที่ชาวราชภัฏพิบูลสงคราม"
+            android:textColor="#A3E4D7"
             android:textSize="10sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="💬\nแชท"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ของไม่ได้ใช้ ส่งต่อให้เพื่อนในมอ 🎓"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="❤️\nรายการโปรด"
-            android:textColor="#666666"
-            android:textSize="10sp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="👤\nโปรไฟล์"
-            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ประหยัดเงินในกระเป๋า ลดขยะ ร่วมใจชาว PSRU"
+            android:textColor="#E0F2E9"
             android:textSize="10sp" />
     </LinearLayout>
+
+    <!-- หัวข้อรายการประกาศ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="รายการประกาศตามหาของ"
+            android:textColor="#222222"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="รายการ"
+            android:textColor="#666666"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- RecyclerView แสดงรายการสินค้า / บอร์ดตามหา -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewWantBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="12dp"
+        android:clipToPadding="false" />
 
 </LinearLayout>

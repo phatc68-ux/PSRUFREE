@@ -1,5 +1,6 @@
-package com.example.psruu; // ปรับชื่อ Package ตามโปรเจกต์ของคุณ
+package com.example.psruu;
 
+import android.widget.ImageView;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSectionTitle;
     private boolean isWantedTab = false;
 
-    // ปุ่มหมวดหมู่ตาม ID ใน XML (catAll, catBook, catEquipment, catIt)
     private TextView catAll, catBook, catEquipment, catIt;
-    private int selectedCategoryIndex = 0; // 0: ทั้งหมด, 1: หนังสือเรียน, 2: อุปกรณ์เรียน, 3: ไอที/หูฟัง
+    private int selectedCategoryIndex = 0;
+
+    private TextView typeAll, typeSell, typeSwap, typeFree;
+    private int selectedPostTypeFilter = 0;
 
     private static final String PREF_NAME = "PSRU_SWAP_PRODUCTS";
     private static final String PREF_WANTED_NAME = "PSRU_WANTED_PRODUCTS";
@@ -68,25 +70,68 @@ public class MainActivity extends AppCompatActivity {
         tabWantedBoard = findViewById(R.id.tabWantedBoard);
         tvSectionTitle = findViewById(R.id.tvSectionTitle);
 
-        // ผูกตัวแปรปุ่มหมวดหมู่ให้ตรงกับ ID ใน XML
         catAll = findViewById(R.id.catAll);
         catBook = findViewById(R.id.catBook);
         catEquipment = findViewById(R.id.catEquipment);
         catIt = findViewById(R.id.catIt);
+
+        typeAll = findViewById(R.id.typeAll);
+        typeSell = findViewById(R.id.typeSell);
+        typeSwap = findViewById(R.id.typeSwap);
+        typeFree = findViewById(R.id.typeFree);
 
         if (tabMarketplace != null && tabWantedBoard != null) {
             tabMarketplace.setOnClickListener(v -> switchTab(false));
             tabWantedBoard.setOnClickListener(v -> switchTab(true));
         }
 
-        // เซ็ต Event การกดเปลี่ยนหน้าหมวดหมู่
         if (catAll != null) catAll.setOnClickListener(v -> filterCategory(0));
         if (catBook != null) catBook.setOnClickListener(v -> filterCategory(1));
         if (catEquipment != null) catEquipment.setOnClickListener(v -> filterCategory(2));
         if (catIt != null) catIt.setOnClickListener(v -> filterCategory(3));
 
+        if (typeAll != null) typeAll.setOnClickListener(v -> filterPostType(0));
+        if (typeSell != null) typeSell.setOnClickListener(v -> filterPostType(1));
+        if (typeSwap != null) typeSwap.setOnClickListener(v -> filterPostType(2));
+        if (typeFree != null) typeFree.setOnClickListener(v -> filterPostType(3));
+
         if (btnOpenPost != null) {
             btnOpenPost.setOnClickListener(v -> showPostItemDialog(isWantedTab ? 3 : 0));
+        }
+
+        // ==========================================
+        // เชื่อมโยงปุ่มเมนูด้านล่าง
+        // ==========================================
+        LinearLayout navMarket = findViewById(R.id.navMarket);
+        LinearLayout navChat = findViewById(R.id.navChat);
+        LinearLayout navFavorite = findViewById(R.id.navFavorite);
+        LinearLayout navProfile = findViewById(R.id.navProfile);
+
+        if (navMarket != null) {
+            navMarket.setOnClickListener(v -> {
+                // อยู่หน้าหลักแล้ว
+            });
+        }
+
+        if (navChat != null) {
+            navChat.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivity(intent);
+            });
+        }
+
+        if (navFavorite != null) {
+            navFavorite.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intent);
+            });
+        }
+
+        if (navProfile != null) {
+            navProfile.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            });
         }
 
         loadSavedProducts();
@@ -94,6 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void switchTab(boolean wanted) {
         isWantedTab = wanted;
+
+        int filterVisibility = wanted ? View.GONE : View.VISIBLE;
+        if (typeAll != null) typeAll.setVisibility(filterVisibility);
+        if (typeSell != null) typeSell.setVisibility(filterVisibility);
+        if (typeSwap != null) typeSwap.setVisibility(filterVisibility);
+        if (typeFree != null) typeFree.setVisibility(filterVisibility);
 
         if (isWantedTab) {
             if (tabMarketplace != null) {
@@ -134,7 +185,12 @@ public class MainActivity extends AppCompatActivity {
         loadSavedProducts();
     }
 
-    // ฟังก์ชันอัปเดตสีพื้นหลังและสีตัวหนังสือของปุ่มหมวดหมู่เวลาสลับหน้า
+    private void filterPostType(int typeIndex) {
+        selectedPostTypeFilter = typeIndex;
+        updatePostTypeFilterUI();
+        loadSavedProducts();
+    }
+
     private void updateCategoryButtonUI() {
         TextView[] buttons = {catAll, catBook, catEquipment, catIt};
         String[] texts = {"🔥 ทั้งหมด", "📖 หนังสือเรียน", "✏️ อุปกรณ์เรียน", "💻 ไอที/หูฟัง"};
@@ -151,6 +207,22 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private void updatePostTypeFilterUI() {
+        if (typeAll == null || typeSell == null || typeSwap == null || typeFree == null) return;
+
+        typeAll.setBackgroundColor(Color.parseColor(selectedPostTypeFilter == 0 ? "#212529" : "#E9ECEF"));
+        typeAll.setTextColor(Color.parseColor(selectedPostTypeFilter == 0 ? "#FFFFFF" : "#495057"));
+
+        typeSell.setBackgroundColor(Color.parseColor(selectedPostTypeFilter == 1 ? "#00794C" : "#D1E7DD"));
+        typeSell.setTextColor(Color.parseColor(selectedPostTypeFilter == 1 ? "#FFFFFF" : "#00794C"));
+
+        typeSwap.setBackgroundColor(Color.parseColor(selectedPostTypeFilter == 2 ? "#495057" : "#E2E3E5"));
+        typeSwap.setTextColor(Color.parseColor(selectedPostTypeFilter == 2 ? "#FFFFFF" : "#495057"));
+
+        typeFree.setBackgroundColor(Color.parseColor(selectedPostTypeFilter == 3 ? "#842029" : "#F8D7DA"));
+        typeFree.setTextColor(Color.parseColor(selectedPostTypeFilter == 3 ? "#FFFFFF" : "#842029"));
     }
 
     private void showPostItemDialog(int defaultTypeIndex) {
@@ -184,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
         selectedPostTypeIndex = defaultTypeIndex;
         updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted);
 
+        // กำหนด Index ให้ตรงกัน: 0=ขาย, 1=แลก, 2=ให้ฟรี, 3=ตามหา
         if (btnTypeSell != null) btnTypeSell.setOnClickListener(v -> { selectedPostTypeIndex = 0; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
         if (btnTypeSwap != null) btnTypeSwap.setOnClickListener(v -> { selectedPostTypeIndex = 1; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
         if (btnTypeFree != null) btnTypeFree.setOnClickListener(v -> { selectedPostTypeIndex = 2; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
@@ -231,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean isWanted = (selectedPostTypeIndex == 3);
 
-                saveProductToPrefs(name, "฿" + price, category, selectedImageUriStr, detail, location, isWanted);
+                saveProductToPrefs(name, "฿" + price, category, selectedImageUriStr, detail, location, isWanted, selectedPostTypeIndex);
                 loadSavedProducts();
 
                 Toast.makeText(MainActivity.this, "โพสต์ประกาศสำเร็จ! 🎉", Toast.LENGTH_SHORT).show();
@@ -261,6 +334,12 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri sourceUri = data.getData();
+
+            try {
+                final int takeFlags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                getContentResolver().takePersistableUriPermission(sourceUri, takeFlags);
+            } catch (Exception ignored) {}
+
             File savedFile = saveUriToInternalCache(sourceUri);
             if (savedFile != null) {
                 selectedImageUriStr = Uri.fromFile(savedFile).toString();
@@ -299,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void addProductCardUI(String name, String price, String category, String imageUriStr, String detail, String location, boolean wanted) {
+    private void addProductCardUI(String name, String price, String category, String imageUriStr, String detail, String location, boolean wanted, int postType) {
         if (currentRowLayout == null || currentRowLayout.getChildCount() >= 2) {
             currentRowLayout = new LinearLayout(this);
             currentRowLayout.setLayoutParams(new LinearLayout.LayoutParams(
@@ -364,11 +443,42 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView tvBadge = new TextView(this);
-        tvBadge.setText(wanted ? "ตามหา" : "ขาย");
+        String badgeText = "ขาย";
+        int badgeColor = Color.parseColor("#00794C");
+
+        if (wanted) {
+            badgeText = "ตามหา";
+            badgeColor = Color.parseColor("#6F42C1");
+        } else {
+            switch (postType) {
+                case 0:
+                    badgeText = "ขาย";
+                    badgeColor = Color.parseColor("#00794C");
+                    break;
+                case 1:
+                    badgeText = "แลก";
+                    badgeColor = Color.parseColor("#495057");
+                    break;
+                case 2:
+                    badgeText = "ให้ฟรี";
+                    badgeColor = Color.parseColor("#842029");
+                    break;
+                case 3:
+                    badgeText = "ตามหา";
+                    badgeColor = Color.parseColor("#6F42C1");
+                    break;
+                default:
+                    badgeText = "ขาย";
+                    badgeColor = Color.parseColor("#00794C");
+                    break;
+            }
+        }
+
+        tvBadge.setText(badgeText);
         tvBadge.setTextColor(Color.WHITE);
-        tvBadge.setTextSize(8);
-        tvBadge.setPadding(6, 2, 6, 2);
-        tvBadge.setBackgroundColor(wanted ? Color.parseColor("#6F42C1") : Color.parseColor("#00794C"));
+        tvBadge.setTextSize(9);
+        tvBadge.setPadding(8, 3, 8, 3);
+        tvBadge.setBackgroundColor(badgeColor);
 
         FrameLayout.LayoutParams badgeParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
@@ -446,7 +556,7 @@ public class MainActivity extends AppCompatActivity {
         detailDialog.show();
     }
 
-    private void saveProductToPrefs(String name, String price, String category, String imageUri, String detail, String location, boolean wanted) {
+    private void saveProductToPrefs(String name, String price, String category, String imageUri, String detail, String location, boolean wanted, int postType) {
         String prefFileName = wanted ? PREF_WANTED_NAME : PREF_NAME;
         SharedPreferences prefs = getSharedPreferences(prefFileName, MODE_PRIVATE);
         String productsJson = prefs.getString("product_list", "[]");
@@ -460,6 +570,7 @@ public class MainActivity extends AppCompatActivity {
             newObj.put("image", imageUri);
             newObj.put("detail", detail);
             newObj.put("location", location);
+            newObj.put("postType", postType);
 
             jsonArray.put(newObj);
             prefs.edit().putString("product_list", jsonArray.toString()).apply();
@@ -468,7 +579,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ฟังก์ชันโหลดและกรองข้อมูลสินค้า ป้องกันจอดำและแอปค้าง
     private void loadSavedProducts() {
         if (containerProducts != null) {
             containerProducts.removeAllViews();
@@ -486,25 +596,32 @@ public class MainActivity extends AppCompatActivity {
                 if (obj == null) continue;
 
                 String category = obj.optString("category", "");
+                int postType = obj.optInt("postType", 0);
 
-                // กรองตามหมวดหมู่ (0: ทั้งหมด, 1: หนังสือเรียน, 2: อุปกรณ์เรียน, 3: ไอที)
                 if (selectedCategoryIndex == 1 && !category.contains("หนังสือเรียน")) continue;
                 if (selectedCategoryIndex == 2 && !category.contains("อุปกรณ์เรียน")) continue;
                 if (selectedCategoryIndex == 3 && !category.contains("ไอที")) continue;
 
-                String imageUriStr = obj.optString("image", "");
-                if (!imageUriStr.isEmpty()) {
-                    try {
-                        Uri parsedUri = Uri.parse(imageUriStr);
+                if (!isWantedTab && selectedPostTypeFilter > 0) {
+                    if (selectedPostTypeFilter == 1 && postType != 0) continue; // ขาย
+                    if (selectedPostTypeFilter == 2 && postType != 1) continue; // แลก
+                    if (selectedPostTypeFilter == 3 && postType != 2) continue; // ให้ฟรี (ตรงกับ index 2 ของปุ่มประเภท)
+                }
+
+                String imageUriStr = "";
+                try {
+                    String rawUri = obj.optString("image", "");
+                    if (!rawUri.isEmpty()) {
+                        Uri parsedUri = Uri.parse(rawUri);
                         if (parsedUri != null && parsedUri.getPath() != null) {
                             File imgFile = new File(parsedUri.getPath());
-                            if (!imgFile.exists()) {
-                                imageUriStr = "";
+                            if (imgFile.exists()) {
+                                imageUriStr = rawUri;
                             }
                         }
-                    } catch (Exception e) {
-                        imageUriStr = "";
                     }
+                } catch (Exception ignored) {
+                    imageUriStr = "";
                 }
 
                 String name = obj.optString("name", "ไม่มีชื่อสินค้า");
@@ -519,12 +636,12 @@ public class MainActivity extends AppCompatActivity {
                         imageUriStr,
                         detail,
                         location,
-                        isWantedTab
+                        isWantedTab,
+                        postType
                 );
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            // หากข้อมูล JSON เกิดความเสียหาย ให้รีเซ็ตค่าเป็นค่าว่างอัตโนมัติเพื่อป้องกันจอค้างซ้ำ
             prefs.edit().putString("product_list", "[]").apply();
         }
     }

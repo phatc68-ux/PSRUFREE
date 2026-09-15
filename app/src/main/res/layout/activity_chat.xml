@@ -5,21 +5,29 @@
     android:background="#F8F9FA"
     android:orientation="vertical">
 
-    <!-- ส่วนหัวแอป -->
+    <!-- ส่วนหัว (Header สีเขียว) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:background="#00794C"
         android:gravity="center_vertical"
-        android:paddingTop="36dp"
-        android:paddingBottom="12dp"
+        android:orientation="horizontal"
         android:paddingHorizontal="16dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_circle_placeholder"
+            android:padding="4dp"
+            android:src="@drawable/ic_launcher_foreground" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,30 +35,27 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ตลาดนัดส่งต่อของ ม.ราชภัฏพิบูลสงคราม"
-                android:textColor="#E2F0EC"
-                android:textSize="11sp" />
+                android:textColor="#E9ECEF"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/btnOpenPost"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_marginRight="8dp"
-            android:background="#00A86B"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_btn_outline"
+            android:backgroundTint="#00965E"
             android:gravity="center"
             android:paddingHorizontal="12dp"
             android:text="+ ลงประกาศ"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold" />
-
-        <View
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:background="#E2F0EC" />
     </LinearLayout>
 
     <!-- เนื้อหาหลัก -->
@@ -64,123 +69,117 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
             android:text="ข้อความสนทนา"
-            android:textColor="#333333"
-            android:textSize="15sp"
+            android:textColor="#212529"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- รายการแชท (กล่องข้อความ) -->
+        <!-- รายการแชท (Card ตัวอย่างตามแบบ) -->
         <LinearLayout
-            android:id="@+id/cardChat1"
+            android:id="@+id/itemChatSample"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_rounded_card"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="12dp"
-            android:gravity="center_vertical">
+            android:padding="12dp">
 
-            <!-- รูปโปรไฟล์ผู้สนทนา -->
-            <View
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginRight="12dp"
-                android:background="#E9ECEF" />
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle_placeholder"
+                android:src="@android:drawable/ic_menu_myplaces" />
 
-            <!-- ข้อมูลแชท -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="ธนวัฒน์ ศึกษาดี"
-                        android:textColor="#333333"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10:42 น."
-                        android:textColor="#888888"
-                        android:textSize="10sp" />
-                </LinearLayout>
+                    android:text="ธนวัฒน์ ศึกษาดี"
+                    android:textColor="#212529"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="2dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="นัดรับที่อาคาร กป. ช่วงบ่ายสองนะครับ"
-                    android:textColor="#666666"
+                    android:textColor="#6C757D"
                     android:textSize="12sp" />
             </LinearLayout>
-        </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="10:42 น."
+                android:textColor="#ADB5BD"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
 
-    <!-- เมนูด้านล่างสุด -->
+    <!-- Bottom Navigation Bar ด้านล่าง -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="56dp"
         android:background="#FFFFFF"
         android:elevation="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="4">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/navMarket"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="🏠\nตลาดนัด"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_compass" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ตลาดนัด" android:textColor="#6C757D" android:textSize="10sp" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/navChat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            textStyle="bold"
-            android:text="💬\nแชท"
-            android:textColor="#00794C"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_send" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="แชท" android:textColor="#00794C" android:textSize="10sp" android:textStyle="bold" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/navFavorite"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="❤️\nรายการโปรด"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_agenda" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="รายการโปรด" android:textColor="#6C757D" android:textSize="10sp" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/navProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="👤\nโปรไฟล์"
-            android:textColor="#666666"
-            android:textSize="10sp" />
+            android:orientation="vertical">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_myplaces" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="โปรไฟล์" android:textColor="#6C757D" android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

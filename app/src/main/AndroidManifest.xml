@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <!-- หน้า Login (ให้เปิดหน้าแรกสุด) -->
+        <!-- หน้า Login เป็นหน้าแรก -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -21,31 +21,13 @@
             </intent-filter>
         </activity>
 
-        <!-- หน้าสมัครสมาชิก -->
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-
-        <!-- หน้าตลาดหลัก -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
-        <!-- หน้าบอร์ดตามหาของ -->
-        <activity
-            android:name=".WantBoardActivity"
-            android:exported="false" />
-
-        <!-- หน้าแชท -->
-        <activity
-            android:name=".ChatActivity"
-            android:exported="false" />
-
-        <activity android:name=".FavoriteActivity"
-            android:exported="false" />
-
-        <activity android:name=".ProfileActivity"
-            android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".WantBoardActivity" android:exported="false" />
+        <activity android:name=".ChatActivity" android:exported="false" />
+        <activity android:name=".ChatRoomActivity" android:exported="false" />
+        <activity android:name=".FavoriteActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false" />
 
     </application>
 

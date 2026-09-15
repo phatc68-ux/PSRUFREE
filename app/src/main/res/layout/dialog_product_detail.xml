@@ -2,208 +2,184 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_rounded_card"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@drawable/bg_dialog_rounded"
+    android:clipToOutline="true"
+    android:paddingBottom="16dp">
 
-    <!-- ปิด / ปุ่มกากบาท และ ป้าย "ขาย" -->
-    <RelativeLayout
+    <!-- ส่วนรูปภาพสินค้า -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:background="#F8F9FA">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/ivDetailProduct"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00A86B"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"
-            android:text="ขาย"
-            android:textColor="#FFFFFF"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:maxHeight="260dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
+        <!-- ปุ่มปิด (กากบาท) มุมขวาบน -->
         <TextView
             android:id="@+id/btnClose"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_alignParentEnd="true"
-            android:background="#DDDDDD"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_circle_close"
             android:gravity="center"
             android:text="✕"
-            android:textColor="#333333"
+            android:textColor="#FFFFFF"
             android:textSize="14sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+    </FrameLayout>
 
-    <!-- รูปภาพสินค้า (ปรับเป็น centerInside และพื้นหลังขาว เพื่อให้รูปแสดงครบทุกสัดส่วนพอดี) -->
-    <ImageView
-        android:id="@+id/ivDetailProduct"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="12dp"
-        android:background="#FFFFFF"
-        android:scaleType="centerInside" />
-
-    <!-- หมวดหมู่ และ ราคา -->
+    <!-- ข้อมูลรายละเอียดสินค้า -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp">
 
         <TextView
             android:id="@+id/tvDetailCategory"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="หมวดหมู่ · PSRU SWAP"
             android:textColor="#00794C"
             android:textSize="11sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvDetailPrice"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetailName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="ชื่อสินค้า"
+            android:textColor="#212529"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDetailPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="฿0"
             android:textColor="#00794C"
             android:textSize="18sp"
             android:textStyle="bold" />
-    </LinearLayout>
 
-    <!-- ชื่อสินค้า -->
-    <TextView
-        android:id="@+id/tvDetailName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="ชื่อสินค้า"
-        android:textColor="#222222"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <!-- ข้อมูลผู้โพสต์ -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="#F8F9FA"
-        android:gravity="center_vertical"
-        android:padding="10dp">
-
-        <View
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginRight="10dp"
-            android:background="#CCCCCC" />
-
+        <!-- ข้อมูลผู้โพสต์ -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ธนวัฒน์ ศึกษาดี"
-                android:textColor="#333333"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="คณะวิทยาศาสตร์ฯ • PSRU"
-                android:textColor="#777777"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:background="#E2F0EC"
-            android:gravity="center"
-            android:paddingHorizontal="10dp"
-            android:text="ดูโปรไฟล์"
-            android:textColor="#00794C"
-            android:textSize="11sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- หัวข้อรายละเอียด -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="รายละเอียด"
-        android:textColor="#333333"
-        android:textSize="12sp"
-        android:textStyle="bold" />
-
-    <!-- เนื้อหารายละเอียด -->
-    <TextView
-        android:id="@+id/tvDetailDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="ไม่มีรายละเอียดเพิ่มเติม"
-        android:textColor="#555555"
-        android:textSize="11sp" />
-
-    <!-- จุดนัดรับ -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="#E2F0EC"
-        android:gravity="center_vertical"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="📍"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/tvDetailLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ม.ราชภัฏพิบูลสงคราม"
-            android:textColor="#0F5132"
-            android:textSize="11sp" />
-    </LinearLayout>
+            android:layout_marginTop="12dp"
+            android:background="#F8F9FA"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-    <!-- ปุ่มกดด้านล่าง (ถูกใจ + ติดต่อ) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_circle_placeholder"
+                android:padding="8dp"
+                android:src="@android:drawable/ic_menu_myplaces" />
 
-        <!-- ปุ่มถูกใจ (Heart) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ธนวัฒน์ ศึกษาดี"
+                    android:textColor="#212529"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="คณะวิทยาศาสตร์ฯ · PSRU"
+                    android:textColor="#6C757D"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_outline"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="ดูโปรไฟล์"
+                android:textColor="#0d6efd"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- รายละเอียดเพิ่มเติม -->
         <TextView
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_rounded_card"
-            android:gravity="center"
-            android:text="❤️"
-            android:textSize="16sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="รายละเอียด"
+            android:textColor="#495057"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-        <!-- ปุ่มติดต่อผู้โพสต์ -->
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:background="#00794C"
-            android:gravity="center"
+            android:id="@+id/tvDetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="ไม่มีรายละเอียดเพิ่มเติม"
+            android:textColor="#6C757D"
+            android:textSize="13sp" />
+
+        <!-- สถานที่นัดรับ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#D1E7DD"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@android:drawable/ic_menu_mapmode" />
+
+            <TextView
+                android:id="@+id/tvDetailLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="ม.ราชภัฏพิบูลสงคราม"
+                android:textColor="#0F5132"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ปุ่มติดต่อ / นัดรับ -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#00794C"
             android:text="💬 ติดต่อผู้โพสต์ / นัดรับ"
             android:textColor="#FFFFFF"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
-
 </LinearLayout>
