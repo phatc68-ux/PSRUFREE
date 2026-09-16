@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -271,22 +272,32 @@ public class ProfileActivity extends AppCompatActivity {
         return card;
     }
 
-    // ฟังก์ชันช่วยโหลดรูปอย่างปลอดภัย ป้องกันแอปเด้งจากสิทธิ์ของ Content Provider ภายนอก
+    // ฟังก์ชันช่วยโหลดรูปโปรไฟล์อย่างปลอดภัย รองรับทั้ง Uri ภายใน (file://) และภายนอก (content://)
     private void safelySetImageUri(ImageView imageView, String uriStr) {
         try {
-            Uri uri = Uri.parse(uriStr);
-            try (InputStream inputStream = getContentResolver().openInputStream(uri)) {
-                if (inputStream != null) {
+            if (uriStr.startsWith("file://")) {
+                Uri uri = Uri.parse(uriStr);
+                File imgFile = new File(uri.getPath());
+                if (imgFile.exists()) {
                     imageView.setImageURI(uri);
                 } else {
                     imageView.setBackgroundColor(0xFFE9ECEF);
                 }
-            } catch (Exception e) {
-                // ดักจับเคส SecurityException หรือไฟล์หาย ป้องกันแอปพัง
-                imageView.setBackgroundColor(0xFFE9ECEF);
+            } else {
+                Uri uri = Uri.parse(uriStr);
+                try (InputStream inputStream = getContentResolver().openInputStream(uri)) {
+                    if (inputStream != null) {
+                        imageView.setImageURI(uri);
+                    } else {
+                        imageView.setBackgroundColor(0xFFE9ECEF);
+                    }
+                } catch (Exception e) {
+                    imageView.setBackgroundColor(0xFFE9ECEF);
+                }
             }
         } catch (Exception e) {
             imageView.setBackgroundColor(0xFFE9ECEF);
+            e.printStackTrace();
         }
     }
 

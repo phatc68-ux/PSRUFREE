@@ -2,6 +2,7 @@ package com.example.psruu;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -12,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -58,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            // บันทึกข้อมูลลง SharedPreferences สำหรับนำไปใช้งานต่อ
+            // บันทึกข้อมูลลง SharedPreferences สำหรับนำไปแสดงผลที่หน้าโปรไฟล์
             SharedPreferences prefs = getSharedPreferences("PSRU_USER_PREF", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("USER_NAME", name);
@@ -70,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             Toast.makeText(RegisterActivity.this, "สมัครสมาชิกสำเร็จ!", Toast.LENGTH_SHORT).show();
 
-            // กลับไปหน้าเข้าสู่ระบบ
+            // กลับไปหน้าก่อนหน้า (Login)
             finish();
         });
 
@@ -86,13 +91,47 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            Uri imageUri = data.getData();
-            if (imageUri != null) {
-                profileImageUriStr = imageUri.toString();
-                tvSelectedImageStatus.setText("เลือกไฟล์แล้ว: " + imageUri.getLastPathSegment());
-                tvSelectedImageStatus.setTextColor(android.graphics.Color.parseColor("#00794C"));
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri sourceUri = data.getData();
+
+            try {
+                final int takeFlags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                getContentResolver().takePersistableUriPermission(sourceUri, takeFlags);
+            } catch (Exception ignored) {}
+
+            // คัดลอกรูปภาพมาเก็บไว้ใน Cache ภายในแอป เพื่อให้หน้า ProfileActivity เปิดอ่านได้ตลอดเวลา
+            File savedFile = saveUriToInternalCache(sourceUri);
+            if (savedFile != null) {
+                profileImageUriStr = Uri.fromFile(savedFile).toString();
+                tvSelectedImageStatus.setText("เลือกไฟล์แล้ว: " + savedFile.getName());
+                tvSelectedImageStatus.setTextColor(Color.parseColor("#00794C"));
+            } else {
+                Toast.makeText(this, "ไม่สามารถโหลดรูปภาพนี้ได้", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private File saveUriToInternalCache(Uri uri) {
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+            if (inputStream == null) return null;
+
+            File cacheDir = getCacheDir();
+            File destinationFile = new File(cacheDir, "profile_" + System.currentTimeMillis() + ".jpg");
+
+            FileOutputStream outputStream = new FileOutputStream(destinationFile);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+
+            outputStream.close();
+            inputStream.close();
+            return destinationFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
