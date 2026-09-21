@@ -256,7 +256,6 @@ public class MainActivity extends AppCompatActivity {
         selectedPostTypeIndex = defaultTypeIndex;
         updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted);
 
-        // กำหนด Index ให้ตรงกัน: 0=ขาย, 1=แลก, 2=ให้ฟรี, 3=ตามหา
         if (btnTypeSell != null) btnTypeSell.setOnClickListener(v -> { selectedPostTypeIndex = 0; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
         if (btnTypeSwap != null) btnTypeSwap.setOnClickListener(v -> { selectedPostTypeIndex = 1; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
         if (btnTypeFree != null) btnTypeFree.setOnClickListener(v -> { selectedPostTypeIndex = 2; updatePostTypeUI(btnTypeSell, btnTypeSwap, btnTypeFree, btnTypeWanted); });
@@ -535,6 +534,9 @@ public class MainActivity extends AppCompatActivity {
         TextView tvDetailLocation = detailDialog.findViewById(R.id.tvDetailLocation);
         View btnCloseDetail = detailDialog.findViewById(R.id.btnClose);
 
+        // [แก้ไขแล้ว] เปลี่ยนชนิดข้อมูลเป็น TextView ให้ตรงกับ dialog_product_detail.xml
+        TextView btnFavorite = detailDialog.findViewById(R.id.ivFavorite);
+
         if (tvDetailName != null) tvDetailName.setText(name);
         if (tvDetailPrice != null) tvDetailPrice.setText(price);
         if (tvDetailCategory != null) tvDetailCategory.setText(category + " · PSRU SWAP");
@@ -547,6 +549,31 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 ivDetailProduct.setBackgroundColor(Color.parseColor("#CED4DA"));
             }
+        }
+
+        // ระบบกดบันทึกรายการโปรด
+        if (btnFavorite != null) {
+            btnFavorite.setOnClickListener(v -> {
+                SharedPreferences prefs = getSharedPreferences("PSRU_FAVORITE_PREF", MODE_PRIVATE);
+                String favJson = prefs.getString("favorite_list", "[]");
+                try {
+                    JSONArray jsonArray = new JSONArray(favJson);
+                    JSONObject newObj = new JSONObject();
+                    newObj.put("name", name);
+                    newObj.put("price", price);
+                    newObj.put("category", category);
+                    newObj.put("image", imageUriStr);
+                    newObj.put("detail", detail);
+                    newObj.put("location", location);
+
+                    jsonArray.put(newObj);
+                    prefs.edit().putString("favorite_list", jsonArray.toString()).apply();
+
+                    Toast.makeText(MainActivity.this, "บันทึกเข้ารายการโปรดแล้ว ❤️", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
 
         if (btnCloseDetail != null) {
@@ -605,7 +632,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!isWantedTab && selectedPostTypeFilter > 0) {
                     if (selectedPostTypeFilter == 1 && postType != 0) continue; // ขาย
                     if (selectedPostTypeFilter == 2 && postType != 1) continue; // แลก
-                    if (selectedPostTypeFilter == 3 && postType != 2) continue; // ให้ฟรี (ตรงกับ index 2 ของปุ่มประเภท)
+                    if (selectedPostTypeFilter == 3 && postType != 2) continue; // ให้ฟรี
                 }
 
                 String imageUriStr = "";

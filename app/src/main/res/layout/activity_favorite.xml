@@ -84,145 +84,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
-                android:text="รายการโปรดที่บันทึกไว้"
+                android:text="❤️ รายการโปรดที่บันทึกไว้"
                 android:textColor="#212529"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- การ์ดสินค้า 2 คอลัมน์ -->
             <LinearLayout
+                android:id="@+id/containerFavoriteProducts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <!-- ชิ้นที่ 1 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="8dp"
-                    android:background="#FFFFFF"
-                    android:elevation="1dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="12dp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="#E9ECEF">
-
-                        <TextView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="top|end"
-                            android:layout_margin="8dp"
-                            android:background="#FFFFFF"
-                            android:gravity="center"
-                            android:text="❤️"
-                            android:textSize="14sp" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="หนังสือเรียน"
-                            android:textColor="#00A86B"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="หนังสือ Java Programming &amp; OOP ฉบับสมบูรณ์"
-                            android:textColor="#212529"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="฿150"
-                            android:textColor="#00794C"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- ชิ้นที่ 2 -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="8dp"
-                    android:background="#FFFFFF"
-                    android:elevation="1dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="12dp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:background="#343A40">
-
-                        <TextView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="top|end"
-                            android:layout_margin="8dp"
-                            android:background="#FFFFFF"
-                            android:gravity="center"
-                            android:text="❤️"
-                            android:textSize="14sp" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="10dp"
-                        android:paddingTop="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ไอทีและแกดเจ็ต"
-                            android:textColor="#00A86B"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="แท็บเล็ต iPad Gen 9 (64GB) พร้อมเคสและปากกาเทียบ"
-                            android:textColor="#212529"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="6,500"
-                            android:textColor="#00794C"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
+                android:orientation="vertical">
             </LinearLayout>
 
         </LinearLayout>

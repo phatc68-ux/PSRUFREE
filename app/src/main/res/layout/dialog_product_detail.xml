@@ -21,6 +21,21 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter" />
 
+        <!-- ปุ่มรูปหัวใจ (สำหรับกดบันทึกรายการโปรด) -->
+        <TextView
+            android:id="@+id/ivFavorite"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_circle_close"
+            android:gravity="center"
+            android:text="❤️"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true" />
+
         <!-- ปุ่มปิด (กากบาท) มุมขวาบน -->
         <TextView
             android:id="@+id/btnClose"
@@ -102,7 +117,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ธนวัฒน์ ศึกษาดี"
+                    text="ธนวัฒน์ ศึกษาดี"
                     android:textColor="#212529"
                     android:textSize="13sp"
                     android:textStyle="bold" />
